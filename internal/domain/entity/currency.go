@@ -4,15 +4,17 @@ import "github.com/google/uuid"
 
 type Currency struct {
 	Id          uuid.UUID `json:"id"`
-	Name        string    `json:"name"`
-	DollarValue float64   `json:"dollar_value"`
+	Code        string    `json:"code"`
+	Description string    `json:"description"`
+	DollarValue float32   `json:"dollar_value"`
 	Symbol      string    `json:"symbol"`
 }
 
-func NewCurrency(name, symbol string, dollarValue float64) *Currency {
+func NewCurrency(code, description, symbol string, dollarValue float32) *Currency {
 	return &Currency{
 		Id:          uuid.New(),
-		Name:        name,
+		Code:        code,
+		Description: description,
 		DollarValue: dollarValue,
 		Symbol:      symbol,
 	}
