@@ -1,13 +1,23 @@
 package service
 
-import "github.com/ArtuoS/hurb/internal/domain/database/repository"
+import (
+	"fmt"
+
+	"github.com/ArtuoS/hurb/internal/domain/database/infra"
+	"github.com/ArtuoS/hurb/pb"
+)
 
 type CurrencyService struct {
-	repository repository.CurrencyRepository
+	repository infra.CurrencyRepository
 }
 
-func NewCurrencyService(currencyRepository repository.CurrencyRepository) CurrencyService {
+func NewCurrencyService(currencyRepository infra.CurrencyRepository) CurrencyService {
 	return CurrencyService{
 		repository: currencyRepository,
 	}
+}
+
+func (c *CurrencyService) ConvertCurrency(model *pb.ConvertCurrencyRequest) (pb.ConvertCurrencyResponse, error) {
+	fmt.Println("Received in switch: ", model.GetFrom())
+	return pb.ConvertCurrencyResponse{}, nil
 }

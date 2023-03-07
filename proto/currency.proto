@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "./cmd/api/pb";
+
+service Currency {
+    rpc ConvertCurrency (ConvertCurrencyRequest) returns (ConvertCurrencyResponse) {}
+}
+
+message ConvertCurrencyRequest {
+    string from = 1;
+    string to = 2;
+    float amount = 3;
+}
+
+message ConvertCurrencyResponse {
+    float amount = 1;
+}
